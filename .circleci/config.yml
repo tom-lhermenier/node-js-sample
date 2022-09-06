@@ -29,4 +29,6 @@ workflows:
   docker-build-image:
     jobs:
       - build-image
-      - publish-latest
+      - publish-latest:
+        requires:
+          - build-image
