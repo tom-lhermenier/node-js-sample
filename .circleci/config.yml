@@ -12,6 +12,6 @@ jobs:
           command: "docker build . -t node-js-sample"
 
 workflows:
-  say-hello-workflow:
+  docker-build-image:
     jobs:
       - build-image
