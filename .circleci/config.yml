@@ -13,9 +13,6 @@ jobs:
           name: "Test image"
           command: "docker run -d -p8080:8080 node-js-sample"
       - run:
-          name: "t"
-          command: "sleep 1"
-      - run:
           name: "Test connexion"
           command: "curl localhost:8080"
   publish-latest:
@@ -32,3 +29,4 @@ workflows:
   docker-build-image:
     jobs:
       - build-image
+      - publish-latest
