@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build-image:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: "Build image"
+          command: "docker build . -t node-js-sample"
+
+workflows:
+  docker-build-image:
+    jobs:
+      - build-image
