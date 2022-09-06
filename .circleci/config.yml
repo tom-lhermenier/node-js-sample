@@ -26,7 +26,7 @@ jobs:
             - ./image.tar
   publish-latest:
     environment:
-      IMAGE_NAME: tomlhermenier/node-js-sample"
+      IMAGE_NAME: tomlhermenier/node-js-sample
     docker:
       - image: cimg/base:stable
     steps:
