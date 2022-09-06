@@ -21,9 +21,11 @@ jobs:
     steps:
       - setup_remote_docker
       - run:
-          name: Publish Docker Image to Docker Hub
-          command: "docker login -u \"$DOCKERHUB_USERNAME\" -p \"$DOCKERHUB_PASSWORD\" 
-            docker push node-js-sample"
+          name: "Login"
+          command: "echo “$DOCKERHUB_PASSWORD” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin"
+      - run:
+          name: "Push"
+          command: "docker push node-js-sample"
 
 workflows:
   docker-build-image:
