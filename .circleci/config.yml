@@ -12,7 +12,10 @@ jobs:
           command: "docker build . -t node-js-sample"
       - run:
           name: "Test image"
-          command: "docker run -p8080:8080 node-js-sample"
+          command: "docker run -d -p8080:8080 node-js-sample"
+      - run:
+          name: "Test connexion"
+          command: "if [[ $(curl -o /dev/null -w '%{http_code}' http://localhost:4000/.well-known/apollo/server-health) == 200 ]]; then echo 'Success'; exit 0; else exit1; fi"
 
 workflows:
   docker-build-image:
