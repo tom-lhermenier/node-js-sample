@@ -1,10 +1,9 @@
 version: 2.1
 
-environment:
-  IMAGE_NAME: "\"$DOCKERHUB_USERNAME\"/node-js-sample"
-
 jobs:
   build-image:
+    environment:
+      IMAGE_NAME: "\"$DOCKERHUB_USERNAME\"/node-js-sample"
     machine:
       image: ubuntu-2004:202010-01
     steps:
@@ -26,6 +25,8 @@ jobs:
           paths:
             - ./image.tar
   publish-latest:
+    environment:
+      IMAGE_NAME: "\"$DOCKERHUB_USERNAME\"/node-js-sample"
     docker:
       - image: cimg/base:stable
     steps:
